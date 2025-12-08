@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Para Marilyn</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: radial-gradient(circle at top, #1a1a2e 0%, #0d0d1a 70%, #000000 100%);
+        color: white;
+        text-align: center;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    .container {
+        margin-top: 40px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    p {
+        font-size: 24px;
+    }
+
+    .side-images {
+        position: absolute;
+        top: 500px;
+        left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        pointer-events: none;
+    }
+
+    .side-images img {
+        width: 220px;
+        border-radius: 15px;
+        box-shadow: 0 0 12px rgba(255,255,255,0.4);
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    #message {
+        margin-top: 20px;
+        font-size: 24px;
+        opacity: 0;
+        transition: opacity 1s ease;
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 14px 30px;
+        background: #ff4f8b;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        font-size: 24px;
+        box-shadow: 0 0 10px rgba(255,255,255,0.4);
+    }
+
+    /* Estrellas */
+    .estrella {
+        position: fixed;
+        width: 4px;
+        height: 4px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        box-shadow: 0 0 6px white;
+        animation: parpadeo 2s infinite ease-in-out;
+    }
+
+    @keyframes parpadeo {
+        0%,100% { opacity: 0.3; }
+        50% { opacity: 1; }
+    }
+
+    .luna {
+        position: fixed;
+        top: 40px;
+        right: 40px;
+        width: 110px;
+        height: 110px;
+        background: #fff8db;
+        border-radius: 50%;
+        box-shadow: 0 0 25px rgba(255,255,210,0.9);
+    }
+
+    .fugaz {
+        position: fixed;
+        top: -40px;
+        left: -40px;
+        width: 5px;
+        height: 5px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 0 10px white;
+        animation: caer 2.5s linear infinite;
+    }
+
+    @keyframes caer {
+        0% { transform: translate(0,0) scale(1); opacity: 1; }
+        80% { opacity: 1; }
+        100% { transform: translate(800px, 400px) scale(0.4); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <p>Hola Marilyn, quería decirte que desde que llegaste a mi vida te has convertido en alguien muy importante para mí.Desde el día en que te conocí me he ido enamorando de ti.</p>
+    <p>Quería saber si estás lista para tener algo conmigo. En el tiempo que nos separamos no sabes la falta que me hacías. Esta vez, si hay algo que estemos haciendo mal, quiero que lo compartamos entre los dos. Quiero estar para ti en tus buenos y malos momentos, ya sea para animarte o simplemente acompañarte.</p>
+    <p>Hoy quería ser sincero contigo y expresarte todo lo que siento. Me gustas mucho y quisiera preguntarte algo muy especial que sale desde lo más profundo de mi corazón:</p>
+
+    <button onclick="mostrarMensaje()">Presióname ♥</button>
+
+    <div id="message"></div>
+
+    <div class="side-images">
+        <img id="imgLeft" src="nose1.jpg" alt="Foto izquierda">
+        <img id="imgRight" src="nose.jpg" alt="Foto derecha">
+    </div>
+
+    <audio id="song" src="León Larregui - Locos (Audio).mp3"></audio>
+</div>
+
+<script>
+for (let i = 0; i < 90; i++) {
+    let estrella = document.createElement('div');
+    estrella.classList.add('estrella');
+    estrella.style.top = Math.random() * 100 + 'vh';
+    estrella.style.left = Math.random() * 100 + 'vw';
+    estrella.style.animationDuration = (Math.random() * 2 + 1) + 's';
+    document.body.appendChild(estrella);
+}
+
+let luna = document.createElement('div');
+luna.classList.add('luna');
+document.body.appendChild(luna);
+
+let fugaz = document.createElement('div');
+fugaz.classList.add('fugaz');
+document.body.appendChild(fugaz);
+
+function mostrarMensaje() {
+    const mensaje = document.getElementById('message');
+    const audio = document.getElementById('song');
+    const imgLeft = document.getElementById('imgLeft');
+    const imgRight = document.getElementById('imgRight');
+
+    imgLeft.style.opacity = 1;
+    imgRight.style.opacity = 1;
+
+    mensaje.innerHTML = `
+        <strong>¿Quieres formar un futuro a mi lado, solo los dos juntos? ❤️</strong><br><br>
+        Quiero que sepas lo mucho que te aprecio, haría lo que fuera por ti porque te amo.<br>
+        El amor que siento hacia ti es demasiado, y ante mis ojos eres perfecta.<br><br>
+        <em>Y aún me faltan mas cosas que quiero decirte:</em><br><br>
+        1. Desde que llegaste a mi vida, todo es diferente.<br><br>
+        2. A veces no sé cómo decirte lo que siento, pero siempre es real.<br><br>
+        3. Me inspiras a ser alguien mejor cada día.<br><br>
+        4. Eres paz cuando estoy en caos.<br><br>
+        5. Me encanta cómo eres, incluso en tus días malos.<br><br>
+        6. Aún hay cosas que nunca te he dicho, como lo mucho que admiro tu forma de ver el mundo.<br><br>
+        7. Gracias por cada momento, incluso los pequeñitos.<br><br>
+        8. Me haces sentir afortunado.<br><br>
+        9. No hay día que no piense en ti.<br><br>
+        10. El día que te conocí cambió algo en mí — 15/11/24.<br><br>
+        11. A veces quisiera detener el tiempo cuando hablo contigo.<br><br>
+        12. Tu nombre siempre será especial para mí: Marilyn.<br><br>
+        13. Y aún me faltan muchas más cosas que quiero decirte, pero prefiero demostrártelas.<br><br>
+    `;
+
+    mensaje.style.opacity = 1;
+    audio.play();
+}
+</script>
+
+</body>
+</html>
