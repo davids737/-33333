@@ -27,22 +27,21 @@
         font-size: 24px;
     }
 
-    .side-images {
-        position: absolute;
-        top: 500px;
-        left: 20px;
-        display: flex;
+    /* NUEVO: contenedor de imágenes debajo del mensaje */
+    .img-bottom {
+        margin-top: 20px;
+        display: none;
         flex-direction: column;
         gap: 20px;
-        pointer-events: none;
+        align-items: center;
     }
 
-    .side-images img {
-        width: 220px;
+    .img-bottom img {
+        width: 260px;
         border-radius: 15px;
         box-shadow: 0 0 12px rgba(255,255,255,0.4);
         opacity: 0;
-        transition: opacity 1s;
+        transition: opacity 1.5s;
     }
 
     #message {
@@ -125,9 +124,10 @@
 
     <div id="message"></div>
 
-    <div class="side-images">
-        <img id="imgLeft" src="nose1.jpg" alt="Foto izquierda">
-        <img id="imgRight" src="nose.jpg" alt="Foto derecha">
+    <!-- NUEVO: imágenes aparecerán aquí -->
+    <div class="img-bottom" id="imgContainer">
+        <img id="img1" src="nose1.jpg" alt="Foto 1">
+        <img id="img2" src="nose.jpg" alt="Foto 2">
     </div>
 
     <audio id="song" src="León Larregui - Locos (Audio).mp3"></audio>
@@ -154,11 +154,9 @@ document.body.appendChild(fugaz);
 function mostrarMensaje() {
     const mensaje = document.getElementById('message');
     const audio = document.getElementById('song');
-    const imgLeft = document.getElementById('imgLeft');
-    const imgRight = document.getElementById('imgRight');
-
-    imgLeft.style.opacity = 1;
-    imgRight.style.opacity = 1;
+    const imgContainer = document.getElementById('imgContainer');
+    const img1 = document.getElementById('img1');
+    const img2 = document.getElementById('img2');
 
     mensaje.innerHTML = `
         <strong>¿Quieres formar un futuro a mi lado, solo los dos juntos? ❤️</strong><br><br>
@@ -181,7 +179,19 @@ function mostrarMensaje() {
     `;
 
     mensaje.style.opacity = 1;
+
     audio.play();
+
+    // Mostrar imágenes debajo
+    imgContainer.style.display = "flex";
+
+    setTimeout(() => {
+        img1.style.opacity = 1;
+    }, 300);
+
+    setTimeout(() => {
+        img2.style.opacity = 1;
+    }, 800);
 }
 </script>
 
